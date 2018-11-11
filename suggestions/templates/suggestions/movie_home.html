@@ -1,0 +1,165 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Movies</title>
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<!-- javascript cdn -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<!-- <link rel="stylesheet" type="text/css" href="movie_home.css"> -->
+	<link rel="stylesheet" href='{% static "suggestions/movie_home.css" %}' type="text/css">
+</head>
+<body>
+	<!-- navbar -->
+	<div class="navbar">
+		<ul class="nav">
+		  <li class="nav-item">
+		    <a class="nav-link active" href="#">Active</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" href="#">Link</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" href="#">Link</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link disabled" href="#">Disabled</a>
+		  </li>
+		</ul>
+	</div>
+	<!-- end navbar -->
+
+	<!-- start of greeting -->
+	<div class="greeting">
+		<div class="container">
+			<h1>Smart Movie Suggestor</h1>
+			<h2>Search smartly</h2>
+			<h3>Search Below</h3>
+			<p>Our movie suggestor app helps you to find movies for you</p>
+			<p>It search thruough Imdb upon your suggestions</p>
+			<p>Every time you want a suggation we are here for you </p>
+		</div>
+	</div>
+	<!-- end of greetings -->
+
+	<!-- search bars -->
+	<div class="search_bar">
+		<div class="container-fluid">
+			<div class="parallax">
+				<div class="row">
+					<div class="col"></div>
+					<div class="col-auto">
+						<h2>Search here</h2>
+<br>
+<br>
+					</div>
+					<div class="col"></div>
+				</div>
+
+				<div class="container">
+				<form method="GET" action="/suggestion"> {% csrf_token %}
+					<br>
+					<div class="row">
+						
+						<div class="col">
+							<input class="form-control" type="date" placeholder="Release Date From" name="release_date_from" value="{{request.GET.release_date_from}}">
+						</div>
+						<div class="col">
+							<input class="form-control" type="date" placeholder="Release Date To" name="release_date_to" value="{{request.GET.release_date_to}}">
+						</div>
+					</div>
+<br>
+					<div class="row">
+						<div class="col">
+							<input class="form-control" type="text" placeholder="Rating From" name="user_rating_from" required="required" value="{{request.GET.user_rating_from}}">
+						</div>
+						<div class="col">
+							<input class="form-control" type="text" placeholder="Rating To" name="user_rating_to" value="{{request.GET.user_rating_to}}" required="required">
+						</div>
+					</div>
+
+<br>
+					<div class="row">
+						<div class="col">
+							<select class="custom-select" name="genre" value={{request.GET.genre}}>
+							    <option selected value="">Choose...</option>
+							    <option name value="action">Action</option>
+							    <option value="horror">Horror</option>
+							    <option value="drama">Drama</option>
+							</select>
+						</div>
+					</div>
+<br>
+					<div class="row">
+						<div class="col"></div>
+						<div class="col-auto">
+							 <button type="submit" class="btn btn-primary">Submit</button>
+						</div>
+						<div class="col"></div>
+					</div>
+
+				</form>
+
+				</div>
+			</div>
+
+		</div>	
+	</div>
+
+	<!-- end of search bars -->
+<br>
+	<!-- start of suggestion section -->
+	<div class= "suggestions">
+		<div class = "container">
+			<div class="row">
+				<div class="col">
+					<h3>{{context.0}}</h3>
+					<P>{{context.3}}</P>
+					<p>Votes: {{context.2}}</p>
+					<p>Rating: {{context.1}}</p>
+					<p>About: {{context.5}}</p>
+
+				</div>
+				<div class="col">
+					<img src= "{{context.4}}" class="rounded float-right" alt="..." height="300" width="200">
+				</div>
+			</div>
+<br>
+			<div class="row">
+				<div class="col">
+					
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!-- end of suggestion section -->
+
+<br>
+
+<hr>
+	<!-- start about us -->
+	<div class="about_us">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<h3>Contact us</h3>
+					<p>Curious which components explicitly require jQuery, our JS, and Popper.js? Click the show components link below. If you’re at all unsure about the general page structure, keep reading for an example page template.</p>
+				</div>
+				<div class="col">
+					<h3>About us</h3>
+					<p>Curious which components explicitly require jQuery, our JS, and Popper.js? Click the show components link below. If you’re at all unsure about the general page structure, keep reading for an example page template.</p>
+				</div>
+				<div class="col">
+					<h3>Future features</h3>
+					<p>Curious which components explicitly require jQuery, our JS, and Popper.js? Click the show components link below. If you’re at all unsure about the general page structure, keep reading for an example page template.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- start about us -->
+</body>
+</html>

@@ -1,0 +1,44 @@
+body{
+	background-color: #222629;
+	height: 40vw;
+
+}
+.navbar a{
+	color :#61892F;
+}
+.greeting h1, h2{
+	color: white;
+}
+.greeting h3{
+	color:#86C232;
+}
+.greeting p{
+	color:#6B6E70;
+}
+
+/*.search_bar{
+	border-color:#61892F;
+	border-width: 5px;
+	border-radius: 5px;
+}*/
+
+.parallax{
+	height:30vw;
+	background-color: #5b0763;
+	background-attachment: fixed;
+	color:white;
+	border-radius: 6px; 
+}
+
+.about_us h3{
+	color: #86C232;
+}
+.about_us p{
+	color:#6B6E70;
+}
+
+.suggestions h3, p{
+	color: white;
+}
+
+
