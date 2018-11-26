@@ -20,10 +20,11 @@ def suggestion(request):
 
 		user_rating_from = request.GET['user_rating_from']
 		user_rating_to = request.GET['user_rating_to']
+		tv_movie = 'tv_movie'
 
 		genre = request.GET['genre']
 
-		url = 'https://www.imdb.com/search/title?/title_type=tv_movie&release_date='+release_date_from+','+release_date_to+'&user_rating='+user_rating_from+','+user_rating_to+'&genres='+genre+'&sort=num_votes,desc'+'&page='+str(randint(1,5))
+		url = 'https://www.imdb.com/search/title?/title_type='+tv_movie+'&release_date='+release_date_from+','+release_date_to+'&user_rating='+user_rating_from+','+user_rating_to+'&genres='+genre+'&sort=num_votes,desc'+'&page='+str(randint(1,5))
 		response = get(url)
 
 		page_html = BeautifulSoup(response.text, 'html.parser')
@@ -44,6 +45,10 @@ def suggestion(request):
 		image = img_trailer.find('a')
 		image = image.img['src']
 
+		# video = main_html.find('div', class_='slate')
+		# video = video.a['href']
+
+
 		# image = suggested_movie.find('img')
 		# image = image['src']
 		summary = main_html.find('div', class_='summary_text')
@@ -60,19 +65,20 @@ def suggestion(request):
 		]
 
 		
-		print(len(movie_container))
-		# print(image)
-		# print(img_trailer)
+		# print(len(movie_container))
+		# # print(image)
+		# # print(img_trailer)
+		# # print(release_date_from)
+		# # print(release_date_to)
+		# # print(genre)
+		# # print(main_page)
+
+		# print(user_rating_from)
+		# print(user_rating_to)
+		# print(genre)
 		# print(release_date_from)
 		# print(release_date_to)
-		# print(genre)
-		# print(main_page)
-
-		print(user_rating_from)
-		print(user_rating_to)
-		print(genre)
-		print(release_date_from)
-		print(release_date_to)
+		# print(video)
 
 
 		return render(request, 'suggestions/movie_home.html', {'context':context})
