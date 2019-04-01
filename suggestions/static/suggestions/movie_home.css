@@ -1,6 +1,7 @@
 body{
 	background-color: #222629;
-	height: 40vw;
+	
+	margin-bottom:50px;
 
 }
 .navbar a{
@@ -23,7 +24,7 @@ body{
 }*/
 
 .parallax{
-	height:30vw;
+	
 	background-color: #5b0763;
 	background-attachment: fixed;
 	color:white;
@@ -31,7 +32,9 @@ body{
 }
 
 .about_us h3{
+	margin-top: 10%;
 	color: #86C232;
+
 }
 .about_us p{
 	color:#6B6E70;
