@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- Start Loading -->
+    <section class="loading-overlay">
+        <div class="Loading-Page">
+            <h2 class="loader">
+                Loading...
+            </h2>
+        </div>
+    </section>
+    <!-- End Loading -->
+    <div class="vault-outer-wrapper">
+        <div class="login-wrap mt0">
+            <div class="login-wrap__left">
+                <div class="flex-center c2b-login">
+                    <div class="sign-form">
+                        <form action="" method="post">{% csrf_token %}
+                            <div class="sign-form__header">
+                                Login
+                            </div>
+                            <div class="sign-form__body">
+                                {% for message in messages %}
+                                    <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+
+                                {% if form.errors %}
+                                    {% for field in form %}
+                                        {% for error in field.errors %}
+                                            <div class="alert alert-danger">
+                                                <strong>{{ error|escape }}</strong>
+                                            </div>
+                                        {% endfor %}
+                                    {% endfor %}
+                                    {% for error in form.non_field_errors %}
+                                        <div class="alert alert-danger">
+                                            <strong>{{ error|escape }}</strong>
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+                                <div class="form-group mt30">
+                                    <input name="username" class="form-group__input form-control" type="text"
+                                           placeholder="username"/>
+                                </div>
+                                <div class="form-group">
+                                    <input name="password" class="form-group__input form-control" type="password"
+                                           placeholder="Password"/>
+                                </div>
+                                <div class="checkbox-wrap mt10">
+                                    <input id="ck-1" name="ck-box" value="1" type="checkbox">
+                                    <label class="mb15 pdr20" for="ck-1">
+                                        Remember Me
+                                    </label>
+                                    <br>
+                                </div>
+                                <div class="input-submit pdt10">
+                                    <button type="submit" class="btn base-bg btn--small">
+                                        Login
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="login-wrap__right">
+                <h1></h1>
+                <h4><img src="{% static 'images/IFIC-Bank-Limited-logo.png' %}" class="clientlogo" alt=""></h4>
+
+                <p style="font-size: 18px;">
+                    Designed &amp; Developed by <a href="http://venturesolutionsltd.com/" style="color: #0091EA;">Venture
+                    Solutions Ltd</a>
+                </p>
+                <p>
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
