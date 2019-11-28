@@ -7,3 +7,14 @@ from django.views.decorators.csrf import csrf_exempt
 
 
 # Create your views here.
+
+class CreateProfile(View):
+    @csrf_exempt
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    def get(self, request):
+        return render(request, "accounts/profile_create.html")
+
+    def post(self, request):
+        pass
