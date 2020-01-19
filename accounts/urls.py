@@ -5,6 +5,6 @@ from .views.profile import CreateProfile
 
 app_name = 'accounts'
 urlpatterns = [
-	path("create-profile/",CreateProfile.as_view(), name="create_profile"),
+	path("create-profile/", CreateProfile.as_view(), name="create_profile"),
 
 ]

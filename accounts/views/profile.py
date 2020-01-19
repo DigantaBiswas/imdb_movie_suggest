@@ -3,6 +3,7 @@ from django.contrib.auth import update_session_auth_hash, authenticate, login
 from django.contrib.auth.forms import SetPasswordForm
 from django.contrib.auth.models import User
 from django.views import View
+from accounts.models import Profile
 from django.views.decorators.csrf import csrf_exempt
 
 
@@ -14,7 +15,14 @@ class CreateProfile(View):
         return super().dispatch(request, *args, **kwargs)
 
     def get(self, request):
-        return render(request, "accounts/profile_create.html")
+        user = request.user
+        profile = Profile.objects.get(user = user)
+        print(profile.profile_picture.url)
+        context = {
+            'user': user,
+            'profile': profile
+        }
+        return render(request, "accounts/profile_create.html", context)
 
     def post(self, request):
         pass
