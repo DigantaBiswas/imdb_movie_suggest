@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+	<div class="navbar">
+		<ul class="nav">
+		  <li class="nav-item">
+		    <a class="nav-link active" href="{{home_url}}">Home</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" href="#">Comming Soon</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" href="#">Comming Soon</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link disabled" href="#">Disabled</a>
+		  </li>
+		</ul>
+	</div>
+    {% block main_content %}
+    {% endblock %}
+
+<hr>
+	<!-- start about us -->
+	<div class="about_us">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<h3>Contact us</h3>
+					<p>For any query email me on digantaprotik@gmail.com</p>
+				</div>
+				<div class="col">
+					<h3>About Site </h3>
+					<p>Search for suggestions here . Special Thanks to IMDB . The reaults are from IMDB . Enjoy Movie suggested by us </p>
+				</div>
+				<div class="col">
+					<h3>Future features</h3>
+					<p>Personal Watched  Movie list generation is coming .</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- start about us -->
+{% endblock  %}
