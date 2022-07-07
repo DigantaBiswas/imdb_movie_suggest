@@ -22,5 +22,5 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'',include('suggestions.urls'))
+    path("", include('suggestions.urls'))
 ]

@@ -1,3 +1,4 @@
+import datetime
 import random
 
 from bs4 import BeautifulSoup
@@ -14,8 +15,11 @@ def home(request):
 
 def suggestion(request):
     if request.method == 'GET':
-        release_date_from = request.GET['release_date_from']
-        release_date_to = request.GET['release_date_to']
+        release_date_from = request.GET['release_date_from'] if request.GET['release_date_from'] \
+            else (datetime.datetime.now() - datetime.timedelta(days=3*365)).strftime('%Y-%m-%d')
+
+        release_date_to = request.GET['release_date_to'] if request.GET['release_date_to'] \
+            else datetime.datetime.now().strftime('%Y-%m-%d')
 
         user_rating_from = request.GET['user_rating_from'] if request.GET['user_rating_from'] else "5"
         user_rating_to = request.GET['user_rating_to'] if request.GET['user_rating_to'] else "10"
