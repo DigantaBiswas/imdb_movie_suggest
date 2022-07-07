@@ -20,7 +20,10 @@ from django.conf.urls.static import static
 
 from django.conf import settings
 
+from suggestions.views import home
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", include('suggestions.urls'))
+    path("", home, name='home_url'),
+    path("suggestion/", include('suggestions.urls'))
 ]
