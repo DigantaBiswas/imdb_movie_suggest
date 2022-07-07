@@ -15,7 +15,7 @@ class ImdbWebParser:
     def generate_url(self, tv_movie, release_date_from, release_date_to, user_rating_from, user_rating_to, genre):
         url = 'https://www.imdb.com/search/title/?title_type=' + tv_movie + '&release_date=' + release_date_from + \
               ',' + release_date_to + '&user_rating=' + user_rating_from + ',' + user_rating_to + '&genres=' + genre + \
-              '&sort=num_votes,desc' + '&page=' + '&start=' + self.generate_random_page_number() + '&ref_=adv_nxt'
+              '&sort=num_votes,desc' + '&start=' + self.generate_random_page_number() + '&ref_=adv_nxt'
         return url
 
     def get_movie(self,  tv_movie, release_date_from, release_date_to, user_rating_from, user_rating_to, genre):

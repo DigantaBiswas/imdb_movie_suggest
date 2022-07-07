@@ -18,9 +18,12 @@
             crossorigin="anonymous"></script>
     <!-- <link rel="stylesheet" type="text/css" href="movie_home.css"> -->
     <link rel="stylesheet" href='{% static "suggestions/movie_home.css" %}' type="text/css">
+    <link rel="icon" href='{% static "suggestions/img/tab-icon.png" %}'>
 </head>
 <body>
 <!-- navbar -->
+<div id="loading"><img src="{% static "suggestions/img/loarder-1.gif" %}" /></div>
+
 <div class="navbar">
     <ul class="nav">
         <li class="nav-item">
@@ -93,9 +96,9 @@
                 <br>
                 <div class="row">
                     <div class="col ">
-                        <select class="custom-select" name="genre" value={{ request.GET.genre }}>
-                            <option selected value="">Choose...</option>
-                            <option name value="action">Action</option>
+                        <select class="custom-select" name="genre" >
+                            <option value={{ request.GET.genre }}>Choose...</option>
+                            <option value="action">Action</option>
                             <option value="horror">Horror</option>
                             <option value="drama">Drama</option>
                             <option value="fantasy">Fantasy</option>
@@ -108,7 +111,7 @@
                 <br>
                 <div class="row">
                     <div class="col col-sm-6"></div>
-                        <button type="submit" class="btn btn-block btn-success">Suggest Movie</button>
+                        <button id="submitBtn" type="submit" class="btn btn-block btn-success">Suggest Movie</button>
                         <br>
                         <br>
                     <div class="col"></div>
@@ -186,3 +189,9 @@
 <!-- start about us -->
 </body>
 </html>
+<script>
+    $('#submitBtn').on('click', function(e){
+    $('#loading').show();
+    $('#form').submit();
+});
+</script>
