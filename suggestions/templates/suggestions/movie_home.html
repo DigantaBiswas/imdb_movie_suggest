@@ -2,172 +2,187 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Movies</title>
-	<!-- bootstrap -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-	<!-- javascript cdn -->
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-	<!-- <link rel="stylesheet" type="text/css" href="movie_home.css"> -->
-	<link rel="stylesheet" href='{% static "suggestions/movie_home.css" %}' type="text/css">
+    <title>Movies</title>
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- javascript cdn -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="movie_home.css"> -->
+    <link rel="stylesheet" href='{% static "suggestions/movie_home.css" %}' type="text/css">
 </head>
 <body>
-	<!-- navbar -->
-	<div class="navbar">
-		<ul class="nav">
-		  <li class="nav-item">
-		    <a class="nav-link active" href="{{home_url}}">Home</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" href="#">Comming Soon</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" href="#">Comming Soon</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link disabled" href="#">Disabled</a>
-		  </li>
-		</ul>
-	</div>
-	<!-- end navbar -->
+<!-- navbar -->
+<div class="navbar">
+    <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link active" href="{{ home_url }}">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Comming Soon</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Comming Soon</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
+    </ul>
+</div>
+<!-- end navbar -->
 
-	<!-- start of greeting -->
-	<div class="greeting">
-		<div class="container">
-			<h1>Smart Movie Suggestor</h1>
-			<h2>Search smartly</h2>
-			<h3>Search Below</h3>
-			<p>Our movie suggestor app helps you to find movies for you</p>
-			<p>It search thruough Imdb upon your suggestions</p>
-			<p>Every time you want a suggation we are here for you </p>
-		</div>
-	</div>
-	<!-- end of greetings -->
+<!-- start of greeting -->
+<div class="greeting">
+    <div class="container">
+        <h1>Smart Movie Suggestor</h1>
+        <h2>Search smartly</h2>
+        <h3>Search Below</h3>
 
-	<!-- search bars -->
-	
-	<div class="search_bar">
-			<div class="parallax">
-				<div class="row">
-					<div class="col"></div>
-					<div class="col-auto">
-						<h2>Search here</h2>
+    </div>
+</div>
+<!-- end of greetings -->
+
+<!-- search bars -->
+
+<div class="search_bar">
+    <div class="parallax">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-auto">
+                <h2>Search here</h2>
+                <br>
+                <br>
+            </div>
+            <div class="col"></div>
+        </div>
+
+        <div class="container">
+            <form method="GET" action="/suggestion">
+                <div class="row">
+
+                    <div class="col col-sm-6">
+                        <input class="form-control" type="date" placeholder="Release Date From" name="release_date_from"
+                               value="{{ request.GET.release_date_from }}">
+                    </div>
+                    <div class="col col-sm-6">
+                        <input class="form-control" type="date" placeholder="Release Date To" name="release_date_to"
+                               value="{{ request.GET.release_date_to }}">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col col-sm-6">
+                        <input class="form-control" type="text" placeholder="Rating From" name="user_rating_from"
+                               value="{{ request.GET.user_rating_from }}">
+                    </div>
+                    <br>
+                    <div class="col col-sm-6">
+                        <input class="form-control" type="text" placeholder="Rating To" name="user_rating_to"
+                               value="{{ request.GET.user_rating_to }}">
+                    </div>
+                </div>
+
+                <br>
+                <div class="row">
+                    <div class="col ">
+                        <select class="custom-select" name="genre" value={{ request.GET.genre }}>
+                            <option selected value="">Choose...</option>
+                            <option name value="action">Action</option>
+                            <option value="horror">Horror</option>
+                            <option value="drama">Drama</option>
+                            <option value="fantasy">Fantasy</option>
+                            <option value="history">History</option>
+                            <option value="mystery">Mystery</option>
+                            <option value="romance"> Romance</option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col col-sm-6"></div>
+                        <button type="submit" class="btn btn-block btn-success">Suggest Movie</button>
+                        <br>
+                        <br>
+                    <div class="col"></div>
+                </div>
+                <div>
+                    <br>
+                </div>
+
+
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+
+<!-- end of search bars -->
 <br>
-<br>
-					</div>
-					<div class="col"></div>
-				</div>
+<!-- start of suggestion section -->
+<div class="suggestions">
+    <div class="container">
+        {% if context %}
+            <div class="row">
+                <div class="col">
+                    <h3>{{ context.0 }}</h3>
+                    <P>{{ context.3 }}</P>
+                    <p>Votes: {{ context.2 }}</p>
+                    <p>Rating: {{ context.1 }}</p>
+                    <p>About: {{ context.5 }}</p>
 
-				<div class="container">
-				<form method="GET" action="/suggestion"> 
-					<div class="row">
-						
-						<div class="col col-sm-6">
-							<input class="form-control" type="date" placeholder="Release Date From" name="release_date_from" value="{{request.GET.release_date_from}}">
-						</div>
-						<div class="col col-sm-6">
-							<input class="form-control" type="date" placeholder="Release Date To" name="release_date_to" value="{{request.GET.release_date_to}}">
-						</div>
-					</div>
-<br>
-					<div class="row">
-						<div class="col col-sm-6">
-							<input class="form-control" type="text" placeholder="Rating From" name="user_rating_from" required="required" value="{{request.GET.user_rating_from}}">
-						</div>
-<br>
-						<div class="col col-sm-6">
-							<input class="form-control" type="text" placeholder="Rating To" name="user_rating_to" value="{{request.GET.user_rating_to}}" required="required">
-						</div>
-					</div>
+                    <!-- <button href="{{context.5}}" class="btn btn-primary">Submit</button> -->
 
-<br>
-					<div class="row">
-						<div class="col ">
-							<select class="custom-select" name="genre" value={{request.GET.genre}}>
-							    <option selected value="">Choose...</option>
-							    <option name value="action">Action</option>
-							    <option value="horror">Horror</option>
-							    <option value="drama">Drama</option>
-							    <option value="fantasy">Fantasy</option>
-							    <option value="history">History</option>
-							    <option value="mystery">Mystery</option>
-							    <option value="romance"> Romance</option>
-							</select>
-						</div>
-					</div>
-<br>
-					<div class="row">
-						<div class="col col-sm-6"></div>
-						<div class="col-auto">
-							 <button type="submit" class="btn btn-primary">Submit</button>
-						</div>
-						<div class="col"></div>
-					</div>
+                </div>
+                <div class="col">
+                    <img src="{{ context.4 }}" class="rounded float-right" alt="..." height="300" width="200">
+                </div>
+            </div>
+        {% endif %}
+        <br>
+        <div class="row">
+            <div class="col">
 
-				</form>
+            </div>
+        </div>
 
-				</div>
-			</div>
-
-		</div>	
-
-
-	<!-- end of search bars -->
-<br>
-	<!-- start of suggestion section -->
-	<div class= "suggestions">
-		<div class = "container">
-			{% if context%}
-			<div class="row">
-				<div class="col">
-					<h3>{{context.0}}</h3>
-					<P>{{context.3}}</P>
-					<p>Votes: {{context.2}}</p>
-					<p>Rating: {{context.1}}</p>
-					<p>About: {{context.5}}</p>
-
-					<!-- <button href="{{context.5}}" class="btn btn-primary">Submit</button> -->
-
-				</div>
-				<div class="col">
-					<img src= "{{context.4}}" class="rounded float-right" alt="..." height="300" width="200">
-				</div>
-			</div>
-			{%endif%}
-<br>
-			<div class="row">
-				<div class="col">
-					
-				</div>
-			</div>
-
-		</div>
-	</div>
-	<!-- end of suggestion section -->
+    </div>
+</div>
+<!-- end of suggestion section -->
 
 <br>
 
 <hr>
-	<!-- start about us -->
-	<div class="about_us">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<h3>Contact us</h3>
-					<p>For any query email me on digantaprotik@gmail.com</p>
-				</div>
-				<div class="col">
-					<h3>About Site </h3>
-					<p>Search for suggestions here . Special Thanks to IMDB . The reaults are from IMDB . Enjoy Movie suggested by us </p>
-				</div>
-				<div class="col">
-					<h3>Future features</h3>
-					<p>Personal Watched  Movie list generation is coming .</p>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- start about us -->
+<!-- start about us -->
+<div class="about_us">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h3>Contact us</h3>
+                <p>For any query email me on digantaprotik@gmail.com</p>
+            </div>
+            <div class="col">
+                <h3>About Site </h3>
+                <p>Search for suggestions here . Special Thanks to IMDB . The results are from IMDB . Enjoy Movie
+                    suggested by us </p>
+            </div>
+            <div class="col">
+                <h3>Future features</h3>
+                <p>User account, watched list, share movie list etc .</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- start about us -->
 </body>
 </html>

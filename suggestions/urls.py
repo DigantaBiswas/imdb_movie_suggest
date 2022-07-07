@@ -1,10 +1,9 @@
-from django.conf.urls import url
+from django.urls import re_path as url, path
 from django.views.generic import TemplateView
-from .import views
-
+from . import views
 
 urlpatterns = [
-	url(r'^$',views.home, name = 'home_url'),
-	url(r'^suggestion/$',views.suggestion, name ='suggestion_url')
+    path("", views.home, name='home_url'),
+    path("suggestion/", views.suggestion, name='suggestion_url')
 
 ]
