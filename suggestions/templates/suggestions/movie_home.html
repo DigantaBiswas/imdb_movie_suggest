@@ -19,10 +19,11 @@
     <!-- <link rel="stylesheet" type="text/css" href="movie_home.css"> -->
     <link rel="stylesheet" href='{% static "suggestions/movie_home.css" %}' type="text/css">
     <link rel="icon" href='{% static "suggestions/img/tab-icon.png" %}'>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
 </head>
 <body>
 <!-- navbar -->
-<div id="loading"><img src="{% static "suggestions/img/loarder-1.gif" %}" /></div>
+<div id="loading"><img src="{% static "suggestions/img/loarder-1.gif" %}"/></div>
 
 <div class="navbar">
     <ul class="nav">
@@ -96,7 +97,7 @@
                 <br>
                 <div class="row">
                     <div class="col ">
-                        <select class="custom-select" name="genre" >
+                        <select class="custom-select" name="genre">
                             <option value={{ request.GET.genre }}>Choose...</option>
                             <option value="action">Action</option>
                             <option value="horror">Horror</option>
@@ -111,15 +112,14 @@
                 <br>
                 <div class="row">
                     <div class="col col-sm-6"></div>
-                        <button id="submitBtn" type="submit" class="btn btn-block btn-success">Suggest Movie</button>
-                        <br>
-                        <br>
+                    <button id="submitBtn" type="submit" class="btn btn-block btn-success">Suggest Movie</button>
+                    <br>
+                    <br>
                     <div class="col"></div>
                 </div>
                 <div>
                     <br>
                 </div>
-
 
 
             </form>
@@ -133,65 +133,65 @@
 <!-- end of search bars -->
 <br>
 <!-- start of suggestion section -->
-<div class="suggestions">
-    <div class="container">
-        {% if context %}
+    <div class="suggestions">
+        <div class="container">
+            {% if context %}
+                <div class="row">
+                    <div class="col">
+                        <h3>{{ context.0 }}</h3>
+                        <P>{{ context.3 }}</P>
+                        <p>Votes: {{ context.2 }}</p>
+                        <p>Rating: {{ context.1 }}</p>
+                        <p>About: {{ context.5 }}</p>
+
+                        <!-- <button href="{{context.5}}" class="btn btn-primary">Submit</button> -->
+
+                    </div>
+                    <div class="col">
+                        <img src="{{ context.4 }}" class="rounded float-right" alt="..." height="300" width="200">
+                    </div>
+                </div>
+            {% endif %}
+            <br>
             <div class="row">
                 <div class="col">
-                    <h3>{{ context.0 }}</h3>
-                    <P>{{ context.3 }}</P>
-                    <p>Votes: {{ context.2 }}</p>
-                    <p>Rating: {{ context.1 }}</p>
-                    <p>About: {{ context.5 }}</p>
-
-                    <!-- <button href="{{context.5}}" class="btn btn-primary">Submit</button> -->
 
                 </div>
-                <div class="col">
-                    <img src="{{ context.4 }}" class="rounded float-right" alt="..." height="300" width="200">
-                </div>
             </div>
-        {% endif %}
-        <br>
-        <div class="row">
-            <div class="col">
 
-            </div>
         </div>
-
     </div>
-</div>
 <!-- end of suggestion section -->
 
 <br>
 
 <hr>
 <!-- start about us -->
-<div class="about_us">
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <h3>Contact us</h3>
-                <p>For any query email me on digantaprotik@gmail.com</p>
-            </div>
-            <div class="col">
-                <h3>About Site </h3>
-                <p>Search for suggestions here . Special Thanks to IMDB . The results are from IMDB . Enjoy Movie
-                    suggested by us </p>
-            </div>
-            <div class="col">
-                <h3>Future features</h3>
-                <p>User account, watched list, share movie list etc .</p>
+    <div class="about_us">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h3>Contact us</h3>
+                    <p>For any query email me on digantaprotik@gmail.com</p>
+                </div>
+                <div class="col">
+                    <h3>About Site </h3>
+                    <p>Search for suggestions here . Special Thanks to IMDB . The results are from IMDB . Enjoy Movie
+                        suggested by us </p>
+                </div>
+                <div class="col">
+                    <h3>Future features</h3>
+                    <p>User account, watched list, share movie list etc .</p>
+                </div>
             </div>
         </div>
     </div>
-</div>
 <!-- start about us -->
 </body>
 </html>
 <script>
-    $('#submitBtn').on('click', function(e){
-    $('#loading').show();
-    $('#form').submit();
-});
+    $('#submitBtn').on('click', function (e) {
+        $('#loading').show();
+        $('#form').submit();
+    });
 </script>
